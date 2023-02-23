@@ -14,12 +14,13 @@
   },
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "tsc",
     "clean": "rm -rf node_modules",
+    "build": "tsc",    
     "reinstall": "npm run clean && npm install",
-    "rebuild": "npm run clean && npm run prebuild && npm install && npm run build",
+    "rebuild": "npm run prebuild && npm run clean && npm install && npm run build",
     "test": "npm run tsc -- --noEmit && jest",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "package": "npm run rebuild && npm run test"
   },
   "dependencies": {
     "@types/express": "^4.17.13",

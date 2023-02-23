@@ -67,10 +67,17 @@ describe("InvoiceRepository test", () => {
     });
 
     expect(invoiceModel).toBeDefined();
-    expect(invoiceProps.id.id).toBe(invoiceModel.id);
-    expect(invoiceProps.name).toBe(invoiceModel.name);
-    expect(invoiceProps.document).toBe(invoiceModel.document);
-    //expect(invoiceProps.address).toBe(invoiceModel.address);
+    expect(invoiceModel.id).toBe(invoiceProps.id.id);
+    expect(invoiceModel.name).toBe(invoiceProps.name);
+    expect(invoiceModel.document).toBe(invoiceProps.document);
+    
+    expect(invoiceModel.address.invoice_id).toBe(invoiceModel.id);
+    expect(invoiceModel.address.street).toBe(invoiceProps.address.street);
+    expect(invoiceModel.address.number).toBe(invoiceProps.address.number);
+    expect(invoiceModel.address.zipCode).toBe(invoiceProps.address.zipCode);
+    expect(invoiceModel.address.city).toBe(invoiceProps.address.city);
+    expect(invoiceModel.address.complement).toBe(invoiceProps.address.complement);
+    expect(invoiceModel.address.state).toBe(invoiceProps.address.state);
 
     expect(invoiceModel.items).toBeDefined();
     expect(invoiceModel.items).toHaveLength(2);
@@ -82,7 +89,7 @@ describe("InvoiceRepository test", () => {
     expect(invoiceModel.items[1].price).toBe(12);
   })
 
-  it("should find a product", async () => {
+  it("should find a invoice", async () => {
     const expectedInvoice = new Invoice(invoiceProps);
     const repository = new InvoiceRepository();
     await repository.save(expectedInvoice);
@@ -90,10 +97,16 @@ describe("InvoiceRepository test", () => {
     const invoice = await repository.find(expectedInvoice.id.id);
 
     expect(invoice).toBeDefined();
-    expect(expectedInvoice.id.id).toBe(invoice.id.id);
-    expect(expectedInvoice.name).toBe(invoice.name);
-    expect(expectedInvoice.document).toBe(invoice.document);
-    //expect(expectedInvoice.address).toBe(invoice.address);
+    expect(invoice.id.id).toBe(expectedInvoice.id.id);
+    expect(invoice.name).toBe(expectedInvoice.name);
+    expect(invoice.document).toBe(expectedInvoice.document);
+    
+    expect(invoice.address.street).toBe(expectedInvoice.address.street);
+    expect(invoice.address.number).toBe(expectedInvoice.address.number);
+    expect(invoice.address.zipCode).toBe(expectedInvoice.address.zipCode);
+    expect(invoice.address.city).toBe(expectedInvoice.address.city);
+    expect(invoice.address.complement).toBe(expectedInvoice.address.complement);
+    expect(invoice.address.state).toBe(expectedInvoice.address.state);
 
     expect(invoice.items).toBeDefined();
     expect(invoice.items).toHaveLength(2);

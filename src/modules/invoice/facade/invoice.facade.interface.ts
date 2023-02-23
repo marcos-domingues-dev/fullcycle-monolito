@@ -1,11 +1,12 @@
 
 // --------------------------------------------------
 // DTO Find
-export interface FindInvoiceUseCaseInputDto {
+
+export interface FindInvoiceFacadeInputDto {
   id: string;
 }
 
-export interface FindInvoiceUseCaseOutputDto {
+export interface FindInvoiceFacadeOutputDto {
   id: string;
   name: string;
   document: string;
@@ -28,7 +29,8 @@ export interface FindInvoiceUseCaseOutputDto {
 
 // --------------------------------------------------
 // DTO Generate
-export interface GenerateInvoiceUseCaseInputDto {
+
+export interface GenerateInvoiceFacadeInputDto {
   name: string;
   document: string;
   street: string;
@@ -44,7 +46,7 @@ export interface GenerateInvoiceUseCaseInputDto {
   }[];
 }
 
-export interface GenerateInvoiceUseCaseOutputDto {
+export interface GenerateInvoiceFacadeOutputDto {
   id: string;
   name: string;
   document: string;
@@ -66,6 +68,6 @@ export interface GenerateInvoiceUseCaseOutputDto {
 // Facade
 
 export default interface InvoiceFacadeInterface {
-  findInvoice(input: FindInvoiceUseCaseInputDto) : Promise<FindInvoiceUseCaseOutputDto>;
-  generate(input: GenerateInvoiceUseCaseInputDto) : Promise<GenerateInvoiceUseCaseOutputDto>;
+  findInvoice(input: FindInvoiceFacadeInputDto): Promise<FindInvoiceFacadeOutputDto>;
+  generate(input: GenerateInvoiceFacadeInputDto): Promise<GenerateInvoiceFacadeOutputDto>;
 }

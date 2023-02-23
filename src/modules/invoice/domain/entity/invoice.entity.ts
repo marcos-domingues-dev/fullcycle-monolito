@@ -45,6 +45,10 @@ export default class Invoice extends BaseEntity implements AggregateRoot {
     return this._items;
   }
 
+  total(): number {
+    return this._items.reduce((previous, current, item) => previous + current.price, 0);
+  }
+
   validate(): void {
     if (this._name.length === 0) {
       throw new Error("Name is required");
