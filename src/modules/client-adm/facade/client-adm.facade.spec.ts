@@ -3,7 +3,6 @@ import ClientAdmFacadeFactory from "../factory/client-adm.facade.factory";
 import { ClientModel } from "../repository/client.model";
 import ClientRepository from "../repository/client.repository";
 import AddClientUseCase from "../usecase/add-client/add-client.usecase";
-import FindClientUseCase from "../usecase/find-client/find-client.usecase";
 import ClientAdmFacade from "./client-adm.facade";
 
 describe("ClientAdmFacade test", () => {
@@ -37,7 +36,14 @@ describe("ClientAdmFacade test", () => {
       id: "1",
       name: "Client 1",
       email: "x@x.com",
-      address: "Address 1",
+      //address: "Address 1",
+      document: "DOC123",
+      street: "Rua Z",
+      number: "321",
+      zipCode: "98654000",
+      city: "New York",
+      state: "New York",
+      complement: ""
     };
 
     await facade.add(input);
@@ -47,25 +53,31 @@ describe("ClientAdmFacade test", () => {
     expect(client).toBeDefined();
     expect(client.name).toBe(input.name);
     expect(client.email).toBe(input.email);
-    expect(client.address).toBe(input.address);
+    // expect(client.address).toBe(input.address);
+    expect(client.document).toBe(input.document);
+    expect(client.street).toBe(input.street);
+    expect(client.number).toBe(input.number);
+    expect(client.zipCode).toBe(input.zipCode);
+    expect(client.city).toBe(input.city);
+    expect(client.complement).toBe(input.complement);
+    expect(client.state).toBe(input.state);
   });
 
   it("should find a client", async () => {
-    // const repository = new ClientRepository();
-    // const findUsecase = new FindClientUseCase(repository);
-    // const addUsecase = new AddClientUseCase(repository);
-    // const facade = new ClientAdmFacade({
-    //   addUsecase: addUsecase,
-    //   findUsecase: findUsecase,
-    // });
-
     const facade = ClientAdmFacadeFactory.create();
 
     const input = {
       id: "1",
       name: "Client 1",
       email: "x@x.com",
-      address: "Address 1",
+      //address: "Address 1",
+      document: "DOC123",
+      street: "Rua Z",
+      number: "321",
+      zipCode: "98123000",
+      city: "New York",
+      complement: "",
+      state: "",
     };
 
     await facade.add(input);
@@ -76,6 +88,13 @@ describe("ClientAdmFacade test", () => {
     expect(client.id).toBe(input.id);
     expect(client.name).toBe(input.name);
     expect(client.email).toBe(input.email);
-    expect(client.address).toBe(input.address);
+    //  expect(client.address).toBe(input.address);
+    expect(client.document).toBe(input.document);
+    expect(client.street).toBe(input.street);
+    expect(client.number).toBe(input.number);
+    expect(client.zipCode).toBe(input.zipCode);
+    expect(client.city).toBe(input.city);
+    expect(client.complement).toBe(input.complement);
+    expect(client.state).toBe(input.state);
   });
 });

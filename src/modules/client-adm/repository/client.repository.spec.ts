@@ -28,7 +28,15 @@ describe("ClientRepository test", () => {
       id: new Id("1"),
       name: "Client 1",
       email: "x@x.com",
-      address: "Address 1",
+
+      //address: "Address 1",
+      document: "DOC123",
+      street: "Rua Z",
+      number: "321",
+      zipCode: "98123000",
+      city: "New York",
+      complement: "",
+      state: ""
     });
 
     const repository = new ClientRepository();
@@ -40,7 +48,16 @@ describe("ClientRepository test", () => {
     expect(clientDb.id).toBe(client.id.id);
     expect(clientDb.name).toBe(client.name);
     expect(clientDb.email).toBe(client.email);
-    expect(clientDb.address).toBe(client.address);
+
+    //expect(clientDb.address).toBe(client.address);
+    expect(clientDb.document).toBe(client.document);
+    expect(clientDb.street).toBe(client.street);
+    expect(clientDb.number).toBe(client.number);
+    expect(clientDb.zipCode).toBe(client.zipCode);
+    expect(clientDb.city).toBe(client.city);
+    expect(clientDb.complement).toBe(client.complement);
+    expect(clientDb.state).toBe(client.state);
+
     expect(clientDb.createdAt).toStrictEqual(client.createdAt);
     expect(clientDb.updatedAt).toStrictEqual(client.updatedAt);
   });
@@ -50,7 +67,15 @@ describe("ClientRepository test", () => {
       id: "1",
       name: "Client 1",
       email: "x@x.com",
-      address: "Address 1",
+      //address: "Address 1",
+      document: "DOC123",
+      street: "Rua Z",
+      number: "321",
+      zipCode: "98123000",
+      city: "New York",
+      complement: "",
+      state: "",
+
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -61,7 +86,16 @@ describe("ClientRepository test", () => {
     expect(result.id.id).toEqual(client.id);
     expect(result.name).toEqual(client.name);
     expect(result.email).toEqual(client.email);
-    expect(result.address).toEqual(client.address);
+
+    //expect(result.address).toEqual(client.address);
+    expect(result.document).toBe(client.document);
+    expect(result.street).toBe(client.street);
+    expect(result.number).toBe(client.number);
+    expect(result.zipCode).toBe(client.zipCode);
+    expect(result.city).toBe(client.city);
+    expect(result.complement).toBe(client.complement);
+    expect(result.state).toBe(client.state);
+
     expect(result.createdAt).toStrictEqual(client.createdAt);
     expect(result.updatedAt).toStrictEqual(client.updatedAt);
   });
